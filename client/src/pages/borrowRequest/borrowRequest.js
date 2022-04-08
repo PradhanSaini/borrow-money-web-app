@@ -7,6 +7,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../helper/authContext"
 import Navbar from "../../components/Navbar/Navbar";
+import {BASE_API_URL} from '../../utils/Constants';
 
 function BorrowRequest() {
 
@@ -37,7 +38,7 @@ function BorrowRequest() {
             upiId:upiId,
         }
         console.log(obj);
-        axios.post("http://localhost:3001/borrow-request", obj,)
+        axios.post(`${BASE_API_URL}/borrow-request`, obj,)
             .then(res => {
                 if (res.data.message) alert(res.data.message);
                 else {

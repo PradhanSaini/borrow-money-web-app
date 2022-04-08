@@ -78,11 +78,11 @@ async function Saveuserdata(userdata) {
           try {
            
 
-        //   var currOtp = 1000 + Math.floor(Math.random() * 9000);
-        var currOtp=1020;
+          var currOtp = 1000 + Math.floor(Math.random() * 9000);
+        // var currOtp=1020;
              
-          var options = {authorization : "a3xkqy7uYQ9wCL4jZ81Bb6XzserKUIPJWNSMOf2Hp5V0TdvGotTJfRCkcXv3M4IleyWuUSsrAtBD5gxZ" , message : `please enter OTP ${currOtp} to access your account`, numbers : [Newuser.mobile]}
-        //   fast2sms.sendMessage(options);
+          var options = {authorization : `${process.env.AuthKey}`, message : `please enter OTP ${currOtp} to access your account`, numbers : [Newuser.mobile]}
+          fast2sms.sendMessage(options);
             
             res.send({ OTP: currOtp });
           } catch (err) {
@@ -105,11 +105,11 @@ async function Saveuserdata(userdata) {
         else {
           try {
 
-        //   var currOtp = 1000 + Math.floor(Math.random() * 9000);
-        var currOtp=1020;
+          var currOtp = 1000 + Math.floor(Math.random() * 9000);
+        // var currOtp=1020;
              
-          var options = {authorization : process.env.AuthKey , message : `please enter OTP ${currOtp} to access your account`, numbers : [Newuser.mobile]}
-        //   fast2sms.sendMessage(options);
+          var options = {authorization : `${process.env.AuthKey}` , message : `please enter OTP ${currOtp} to access your account`, numbers : [Newuser.mobile]}
+          fast2sms.sendMessage(options);
             
             res.send({ OTP: currOtp });
           } catch (err) {
@@ -162,6 +162,6 @@ async function Saveuserdata(userdata) {
 
 
 
-app.listen(3001, () => {
+app.listen(process.env.port | 3001, () => {
     console.log(`PORT ${3001} is running ......`);
   });
