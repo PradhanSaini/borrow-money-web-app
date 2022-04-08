@@ -35,6 +35,29 @@ mobile: {
 });  
 const UserDetails = mongoose.model("UserDetails", UserSchema);
 
+
+const borrowSchema = new mongoose.Schema({
+    mobile: {
+      type: Number,
+    },
+    amount: {
+      type: Number,
+    },
+    reason: {
+      type: String,
+    },
+    duration: {
+      type: String,
+    },
+    upiId: {
+      type: String,
+    }
+  });
+
+  const borrowDetails = mongoose.model("borrowDetails", borrowSchema);
+
+
+
 async function Saveuserdata(userdata) {
     const newuser = new UserDetails(userdata);
     const result = await newuser.save();
@@ -71,13 +94,67 @@ async function Saveuserdata(userdata) {
   });
 
 
+  app.post("/login", (req, res) => {
+    const Newuser = req.body;
+    if (!Newuser.mobile || Newuser.mobile.length<10)res.send({message: "Please enter correct Mobile Number"})
+    else {
+      UserDetails.findOne({ mobile: Newuser.mobile }, (err, user) => {
+        if (!user) {
+          res.send({ message: "User Not Registered" });
+        }
+        else {
+          try {
+
+        //   var currOtp = 1000 + Math.floor(Math.random() * 9000);
+        var currOtp=1020;
+             
+          var options = {authorization : process.env.AuthKey , message : `please enter OTP ${currOtp} to access your account`, numbers : [Newuser.mobile]}
+        //   fast2sms.sendMessage(options);
+            
+            res.send({ OTP: currOtp });
+          } catch (err) {
+            res.send({ message: `Error : ${err}` });
+          }
+        }
+      });
+    }
+  });
+
+
+  async function Saveborrowdata(NewborrowRequest) {
+    const newrequest = new borrowDetails(NewborrowRequest);
+    const result = await newrequest.save();
+    return result;
+  }
+
+  app.post("/borrow-request", async (req, res) => {
+    const NewborrowRequest = req.body;
+    Saveborrowdata(NewborrowRequest);
+    res.send("");
+    // }
+  });
+
+  app.post("/allrequests", async (req, res) => {
+    borrowDetails.find({ mobile: parseInt(req.body.header,10) }, (err, requests) => {
+      console.log(requests);
+      res.send(requests);
+    });
+  });
+  
+
+
   app.post("/verify", async (req, res) => {
     const Rbody = req.body;
     // // console.log("code = ", code, usercode);
     if (Rbody.otp == Rbody.userotp) {
-      await Saveuserdata({ name: Rbody.name, gender: Rbody.gender, mobile:Rbody.mobile });
+        UserDetails.findOne({ mobile: Rbody.mobile },async (err, user) => {
+            if (!user) {
+                await Saveuserdata({ name: Rbody.name, gender: Rbody.gender, mobile:Rbody.mobile });
+            }
+      
       res.send({ Isverify: true });
-    }
+    })
+}
     else {
       res.send({ Isverify: false });
     }

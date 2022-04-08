@@ -2,10 +2,11 @@ import React, { useContext } from 'react'
 import style from './signupPage.module.scss'
 import { Link } from 'react-router-dom';
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../helper/authContext";
 import axios from "axios";
 import swal from 'sweetalert2';
+import Navbar from '../../components/Navbar/Navbar';
 
 
 const SignupPage = () => {
@@ -16,6 +17,8 @@ const SignupPage = () => {
     const [mobile, setMobile] = useState();
     const [otp,setOtp]= useState();
     const [userotp, setUserotp]= useState();
+
+    let history = useNavigate();
 
     function handleChange(e) {
         if (e.target.name === "name") setName(e.target.value);
@@ -52,7 +55,6 @@ const SignupPage = () => {
               });
               setOtp(res.data.OTP);
               document.getElementById('1').style.display="block";
-            //   history("/");
             }
           })
           .catch(err => {
@@ -85,8 +87,8 @@ const SignupPage = () => {
               });
             }
             else {
-            //   setAuthState(true);
-            //   sessionStorage.setItem("accessToken", res.data);
+              setAuthState(true);
+              sessionStorage.setItem("accessToken",mobile);
               swal.fire({
                 icon: 'success',
                 title: 'Successfully Registered',
@@ -94,7 +96,7 @@ const SignupPage = () => {
                 timer: 1000,
               });
 
-            //   history("/");
+              history("/");
             }
           })
           .catch(err => {
@@ -111,6 +113,7 @@ const SignupPage = () => {
 
   return (
     <div>
+        <Navbar/>
         <h1>Register</h1>
           <form onSubmit={handleSubmit}>
               <table >
@@ -136,18 +139,18 @@ const SignupPage = () => {
            
 
             <div className={style.btn_block}>
-              <button className="btn btn-primary" type="submit">Register</button>
+              <button className={style.custom_button} type="submit">Register</button>
             </div>
             <div className={style.popup} id="1">
                <input type='number' placeholder='Please enter otp' name="otp" onChange={handleChange}></input>
-               <button onClick={(handleVerify)}>Verify</button>
+               <button className={style.custom_button} onClick={(handleVerify)}>Verify</button>
           </div>
              <div className={style.or}>
-              Or
+              Already Registered ?
             </div>
             <div className={style.btn_block}>
               <Link to="/loginPage">
-                <button type="button" className="btn btn-secondary">Login
+                <button type="button" className={style.custom_button}>Login
                 </button>
               </Link>
             </div> 

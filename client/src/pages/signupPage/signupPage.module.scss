@@ -1,24 +1,19 @@
 
-.btn_block {
-    margin-top: 10px;
-    text-align: center;
-    margin-left: 40%;
-    margin-right:40%;
-    }
-    
-button:hover {
-background: #848788;
-}
 
 .or{
-text-align: center;
-}
+    // text-align: center;
+    margin-right:30px;
+    margin-top:20px;
+    }
+    
+
 
 
 .forinput{
     width: 285px;
     height: 36px;
-    margin: 13px  0 0 600px;
+    margin-top:7px;
+    margin-left:100%;
     padding-left: 10px; 
     border-radius: 5px 5px 5px 5px;
     border: solid 1px #cbc9c9; 
@@ -29,4 +24,13 @@ text-align: center;
     
     .popup{
         display: none;
+    }
+
+    .custom_button{
+        border:solid 1px rgb(0, 0, 0);
+        color:rgb(30, 31, 31);
+        width: 130px;
+        margin-right: 25px;
+        margin-left:1px;
+        margin-top:15px;
     }
