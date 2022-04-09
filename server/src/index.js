@@ -160,8 +160,16 @@ async function Saveuserdata(userdata) {
     }
   });
 
+  if(process.env.NODE_ENV=="production"){
+    app.use(express.static('client/build'));
+  }
+  
+  app.get("*", function (request, response) {
+    response.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+  });
 
 
-app.listen(process.env.port | 3001, () => {
+
+app.listen(process.env.PORT || 3001, () => {
     console.log(`PORT ${3001} is running ......`);
   });
