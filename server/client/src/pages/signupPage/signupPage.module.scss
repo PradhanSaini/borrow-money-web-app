@@ -13,8 +13,8 @@
     width: 285px;
     height: 36px;
     margin-top:7px;
-    margin-left:100%;
-    padding-left: 10px; 
+    // margin-left:100%;
+    // padding-left: 10px; 
     border-radius: 5px 5px 5px 5px;
     border: solid 1px #cbc9c9; 
     box-shadow: 1px 2px 5px rgba(0,0,0,.9); 
@@ -34,3 +34,11 @@
         margin-left:1px;
         margin-top:15px;
     }
+
+    .marg{
+        width:100%;
+        // background-color: rgb(209, 203, 166);
+        // border: 1px solid rgb(173, 173, 173);
+        height: 35px;
+        table-layout: fixed;
+      }

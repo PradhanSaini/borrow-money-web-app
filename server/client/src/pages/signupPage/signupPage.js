@@ -117,7 +117,7 @@ const SignupPage = () => {
         <Navbar/>
         <h1>Register</h1>
           <form onSubmit={handleSubmit}>
-              <table >
+              <table className={style.marg}>
                   <tr>
                   <input className={style.forinput} type="text" name="name" id="name" placeholder="Name" onChange={handleChange} />
                   </tr>

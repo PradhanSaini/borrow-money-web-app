@@ -61,7 +61,7 @@ function BorrowRequest() {
             <div className={style.main_block}>
                 <h1>Make a Borrow Request</h1>
                 <form onSubmit={handleSubmit}>
-                    <table className={style.requestTable}>
+                    <table className={style.marg}>
                         <tr>
                         <input className={style.forinput} type="number" name="amount" id="amount" placeholder="Enter Amount" onChange={handleChange} />
                         </tr>

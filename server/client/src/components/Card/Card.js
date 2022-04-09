@@ -13,27 +13,27 @@ const Card = (card) => {
              <td className={styles.tdd}>
              Requested Amount : 
              </td>
-             <td >
+             <td className={styles.tdd}>
              {card.amount}
              </td>
          </tr>
-         <tr>
-             <td>
+         <tr className={styles.trr}>
+             <td className={styles.tdd}>
              UPI ID : 
              </td>
-             <td>
+             <td className={styles.tdd}>
              {card.upiId}
              </td>
          </tr>
-         <tr>
-             <td>
+         <tr className={styles.trr}>
+             <td className={styles.tdd}>
              Reason : 
              </td>
-             <td>
+             <td className={styles.tdd}>
              {card.reason}
              </td>
          </tr>
-         <tr>
+         <tr className={styles.trr}>
              <td>
              Duration : 
              </td>

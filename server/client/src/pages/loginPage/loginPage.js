@@ -108,7 +108,7 @@ const LoginPage = () => {
       <Navbar/>
         <h1>Login</h1>
           <form onSubmit={handleSubmit}>
-              <table >
+              <table className={style.marg}>
                   <tr>
                   <input className={style.forinput} type="number" name="mobile" id="mobile" placeholder="Mobile No." onChange={handleChange} />
                   </tr>
