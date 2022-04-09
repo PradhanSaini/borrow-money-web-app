@@ -101,24 +101,18 @@ app.use(cors());
 
 Following are some of the features of the application
 
-## Engaging Landing page
+## Registration page
 
-![Landing](./assets/homeSS.png)
+![Registration page](./assets/registrationPage.png)
 
-## Top Place to vist
+## Borrow Request page
 
-![Top Place](./assets/tripSS.png)
+![Borrow Request page](./assets/borrowRequestWindow.png)
 
-## Last Minute Offers
+## All Requests made
 
-![Last Minute](./assets/lastSS.png)
+![All Requests made](./assets/allRequests.png)
 
-## Popular Destinaions
 
-![Popular](./assets/popular.png)
-
-# Hotel Bookings
-
-![Hotel](./assets/hotel.png)
 
 
