@@ -7,21 +7,15 @@ You can simply fork this folder to start working on it.
 
 To push your changes to Github/Gitlab you need to create a new repository and push the changes there.
 
-## Setup instructions for Backend
+## Setup instructions for Backend 
 
-Open a teminal and move into the backend directory
+Open a teminal and move into the server directory
 then run the following command
 
 ```
 backend
     src
         index.js -> handles all backend requests 
-
-frontend
-    src
-        components -> create and store components here
-        pages -> create and store pages here
-        utils -> create and store utilities here 
 ```
 
 Edit the variables in `.env` file you just created.
@@ -38,7 +32,6 @@ client -> npx create-react-app to start a frontend
 ```
 
 This will start a development server at [localhost:3001](localhost:3001) for backend
-This will start a development server at [localhost:3000](localhost:3000) for frontend
 
 
 
@@ -95,6 +88,39 @@ app.use(cors());
 
 ```
 
+# Approach 
+
+```
+ There are 4 screens in the web app and a Navigation bar.
+ 1. Signup Screen 
+    there are 3 user details requered for sing up 
+    a) Name
+    b) Gender
+    c) Mobile no.
+    An OTP verification performed using fast2sms sms service provider.
+    Once verification done successfully user details are stored in MongoDB database.
+ 2. Login Screen
+    Already registered user can login after performing OTP verification using mobile number.
+ 3. Borrow Request Screen
+    This screen allow users to make request from friends.
+    there are 4 field required to make request
+    a) requested amount
+    b) reason for request
+    c) duration of borrowing
+    d) UPI ID
+ 4. All Requests
+    This screen show all the request made by user.
+```
+
+# Technologies used
+
+```
+  React Hooks :- useState, useEffect, useContext
+  Axios :- HTTP client based service to fetch APIs
+  Express :- Backend Web application framework for node.js
+  Mongoose :- Object Data Modeling library for MongoDB
+  fast2sms :- online sms service provider that is used for OTP verification
+```
 
 
 # PREVIEW
