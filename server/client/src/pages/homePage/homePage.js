@@ -7,6 +7,7 @@ import style from './homePage.module.scss'
 // import {useLocation} from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { AuthContext } from '../../helper/authContext';
+import { BASE_API_URL } from '../../utils/Constants';
 
 import { useEffect } from 'react'
 function HomePage() {
@@ -18,7 +19,7 @@ function HomePage() {
         var head= sessionStorage.getItem("accessToken")
         if(head)
         {
-            axios.post('http://localhost:3001/allrequests', {header:head})
+            axios.post(`${BASE_API_URL}/allrequests`, {header:head})
             .then((res) => {
             console.log(res.data[0]);
             setAllrequests(res.data);

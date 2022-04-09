@@ -7,6 +7,7 @@ import { AuthContext } from "../../helper/authContext";
 import axios from "axios";
 import swal from 'sweetalert2';
 import Navbar from '../../components/Navbar/Navbar';
+import { BASE_API_URL } from '../../utils/Constants';
 
 
 const LoginPage = () => {
@@ -29,7 +30,7 @@ const LoginPage = () => {
         const obj = {
           mobile:mobile
         }
-        axios.post("http://localhost:3001/login", obj)
+        axios.post(`${BASE_API_URL}/login`, obj)
           
           .then(res => {
             if (res.data.message) {
@@ -69,7 +70,7 @@ const LoginPage = () => {
           otp:otp,
           userotp:userotp
         }
-        axios.post("http://localhost:3001/verify", obj)
+        axios.post(`${BASE_API_URL}/verify`, obj)
           
           .then(res => {
             if (!res.data.Isverify) {

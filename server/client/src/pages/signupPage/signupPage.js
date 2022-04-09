@@ -7,6 +7,7 @@ import { AuthContext } from "../../helper/authContext";
 import axios from "axios";
 import swal from 'sweetalert2';
 import Navbar from '../../components/Navbar/Navbar';
+import { BASE_API_URL } from '../../utils/Constants';
 
 
 const SignupPage = () => {
@@ -35,7 +36,7 @@ const SignupPage = () => {
           gender:gender,
           mobile:mobile
         }
-        axios.post("http://localhost:3001/signupPage", obj)
+        axios.post(`${BASE_API_URL}/signupPage`, obj)
           
           .then(res => {
             if (res.data.message) {
@@ -77,7 +78,7 @@ const SignupPage = () => {
           otp:otp,
           userotp:userotp
         }
-        axios.post("http://localhost:3001/verify", obj)
+        axios.post(`${BASE_API_URL}/verify`, obj)
           
           .then(res => {
             if (!res.data.Isverify) {
